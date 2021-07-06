@@ -7,7 +7,7 @@ driver = webdriver.Chrome("C:\Program Files\chromedriver.exe") #Put the path of 
 
 def get_source():
     cars_list = []
-    for i in range(1, 9):
+    for i in range(1, 2):
         page = "https://www.carlogos.org/car-brands/list_1_{}.html".format(i)
         driver.get(page)
         cars = driver.find_element_by_class_name('logo-list')
@@ -42,10 +42,12 @@ def clean_car_data(data):
 def get_data(cars_list):
     car_file = open("list of cars.txt", "w")
     car_file.write('The list of cars: \n')
+    print("Start Scrapp the data of {} brands: ".format(len(cars_list)))
     for car in cars_list:
         driver.get(car[0])
         car_brand = driver.find_element_by_class_name('title').find_element_by_tag_name('h1').get_attribute('innerHTML')
         car_brand = car_brand[:-5]
+        print("{}.Srapp the data of {}".format(cars_list.index(car), car_brand))
         if car_brand[-1] == ' ':
             car_brand = car_brand[:car_brand.rindex(' ')]
         try:
@@ -66,7 +68,8 @@ def get_data(cars_list):
                     car_data_file.write('invalid data')
                     test_2 = False
         car_data_file.write('{}\n'.format(car_brand))
-
-
+    driver.quit()
+print("Be Patient...")
 cars_list = get_source()
 get_data(cars_list)
+print("Done !")
