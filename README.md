@@ -1,8 +1,7 @@
 # Scrapping cars data Using Python
 ## Main Usage :
-    * Get All the brands name and save them in one    file
-    * Get for each brand his information and logo
-    and save them in one folder
+    * Get All the brands name and save them in one file
+    * Get for each brand his information and logo and save them in one folder
 ## The Source :
 https://www.carlogos.org/
 
@@ -22,6 +21,7 @@ https://www.carlogos.org/
 ### The Script's Result:
 <span style='color: red'> You will get List of folders like that.
 each folder contain the logo(png) and the information about the brand in the text file </span>
+![4](https://user-images.githubusercontent.com/86334640/124533285-56161f00-de12-11eb-8164-1dd552c26d31.PNG)
 
 ![1](https://user-images.githubusercontent.com/86334640/124531819-91fbb500-de0f-11eb-96e4-2055e8631f61.PNG)
 
