@@ -21,12 +21,8 @@ def get_source():
     return (cars_list)
 
 def clean_car_data(data):
-    data_lines = []
     clean_data = []
-    for x in data:
-        if x == '\n':
-            data_lines.append(data[:data.index(x)])
-            data = data[data.index(x)+1:]
+    data_lines = data.split('\n')
     for x in data_lines:
         if x.count('<') != 1 and  x != '':
             y = ''
