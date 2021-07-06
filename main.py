@@ -67,7 +67,7 @@ def get_data(cars_list):
                 except:
                     car_data_file.write('invalid data')
                     test_2 = False
-        car_data_file.write('{}\n'.format(car_brand))
+        car_file.write('{}\n'.format(car_brand))
     driver.quit()
 print("Be Patient...")
 cars_list = get_source()
