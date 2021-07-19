@@ -20,24 +20,6 @@ def get_source():
             cars_list.append(car_data)
     return (cars_list)
 
-def clean_car_data(data):
-    clean_data = []
-    data_lines = data.split('\n')
-    for x in data_lines:
-        if x.count('<') != 1 and  x != '':
-            y = ''
-            test = False
-            while test == False:
-                x = x[x.index('>')+1:]
-                if len(x) == 0:
-                    test = True
-                elif x[0] != '<':
-                    if len(y) == 0:
-                        y += x[:x.index('<')]
-                    else:
-                        y += ' '+ x[:x.index('<')]
-            clean_data.append(y)
-    return (clean_data)
 
 def get_data(cars_list):
     car_file = open("list of cars.txt", "w")
@@ -52,10 +34,10 @@ def get_data(cars_list):
             car_brand = car_brand[:car_brand.rindex(' ')]
         try:
             car_information = driver.find_element_by_class_name('brand-overview').find_element_by_class_name(
-                'fold-text').get_attribute('innerHTML')
+                'fold-text').get_attribute('textContent')
         except:
-            car_information = driver.find_element_by_tag_name('tbody').get_attribute('innerHTML')
-        car_information = clean_car_data(car_information)
+            car_information = driver.find_element_by_tag_name('tbody').get_attribute('textContent')
+
         os.mkdir('{}'.format(car_brand))
         urllib.request.urlretrieve(url=car[1], filename='{}\{}.png'.format(car_brand, car_brand + ' Logo'))
         car_data_file = open('{}\{}.txt'.format(car_brand, car_brand + ' Review'), 'w')
